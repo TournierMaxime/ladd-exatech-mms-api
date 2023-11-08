@@ -1,0 +1,68 @@
+{
+  "name": "app",
+  "description": "## Installation",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx nodemon --require dotenv/config --ignore var index.js",
+    "devWindows": "npx nodemon --require dotenv/config --ignore var --legacy-watch --polling-interval 4000 index.js",
+    "start": "node --require dotenv/config index.js",
+    "migrate": "npx sequelize-cli db:migrate",
+    "addMachineHistory": "node --require dotenv/config scripts/machineHistory.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/laddexatech/laddexatech-mms-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/laddexatech/laddexatech-mms-api/issues"
+  },
+  "homepage": "https://gitlab.com/laddexatech/laddexatech-mms-api#readme",
+  "devDependencies": {
+    "@types/body-parser": "^1.19.2",
+    "@types/cookie-parser": "^1.4.3",
+    "@types/cors": "^2.8.13",
+    "@types/express": "^4.17.17",
+    "@types/nodemailer": "^6.4.8",
+    "@types/uuid": "^9.0.1",
+    "eslint": "^8.42.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^16.0.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "nodemon": "^2.0.22",
+    "prettier": "^2.8.8",
+    "sequelize-cli": "^6.6.1"
+  },
+  "dependencies": {
+    "axios": "^1.4.0",
+    "bcrypt": "^5.1.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "discord.js": "^14.11.0",
+    "dotenv": "^16.1.4",
+    "express": "^4.18.2",
+    "express-async-handler": "^1.2.0",
+    "fs": "^0.0.1-security",
+    "https": "^1.0.0",
+    "jsonwebtoken": "^9.0.0",
+    "mariadb": "^3.1.2",
+    "moment": "^2.29.4",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.6.0",
+    "path": "^0.12.7",
+    "sequelize": "^6.32.0",
+    "twilio": "^4.11.2",
+    "url": "^0.11.0",
+    "winston": "^3.9.0"
+  }
+}

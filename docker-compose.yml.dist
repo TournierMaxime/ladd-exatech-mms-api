@@ -1,0 +1,54 @@
+version: "3.7"
+services:
+  server: 
+    hostname: ${SERVICE_HOSTNAME}
+
+    build:
+      context: .
+      dockerfile: ./node.Dockerfile
+      args:
+        USER_ID: 1000
+        GROUP_ID: 1000
+
+    ports:
+      - "${EXPRESS_PORT}:${EXPRESS_PORT}"
+    
+    volumes:
+      - .:/var/app
+    
+    working_dir: /var/app
+
+    user: 1000:1000
+    
+    command: npm run dev
+
+    logging:
+      driver: json-file
+      options:
+        max-file: "10"
+        max-size: "10m"
+
+
+  db:
+    image: mariadb
+
+    ports:
+      - "${DB_HOST_PORT}:${DB_PORT}"
+
+    volumes:
+      - "dbdata:/var/lib/mysql"
+
+    environment:
+      MARIADB_DATABASE: ${DB_NAME}
+      MARIADB_USER: ${DB_USER}
+      MARIADB_PASSWORD: ${DB_PASSWORD}
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+
+    logging:
+      driver: json-file
+      options:
+        max-file: "10"
+        max-size: "10m"
+
+volumes:
+  dbdata:
